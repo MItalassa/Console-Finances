@@ -87,13 +87,26 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 // total number of months included in the dataset
-console.log(finances.length);
+console.log(finances.length)
 
 //The net total amount of Profit/Losses over the entire period.
 
-var netTotal = 0
-for (var i=0; i<finances.lenght; i++) {
-  netTotal = netTotal + finances[i][1];
+var netTotal= 0;
+for (i= 0; i < finances.length; i++) {
+  netTotal= netTotal + finances[i][1];
 }
 console.log(netTotal);
 
+// The average of the changes in Profit/Losses over the entire period.
+//var AvrgChng= [netTotal/(finances.length-1)]
+
+var differences = [];
+ for (var i = 1; i < finances.length; i++){
+  var difference= finances[i][1] - finances [i-1][1];
+  differences.push(difference);
+ }
+ console.log(`Average Change: £${difference}`);
+
+
+
+  
