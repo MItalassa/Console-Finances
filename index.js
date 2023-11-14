@@ -111,25 +111,24 @@ for ( i = 0; i < differences.length; i++) {
 }
 
 var avgChange = differenceSum/ (finances.length-1);
-console.log(Math.round(avgChange*100)/100);
+console.log("Average Change: " + Math.round(avgChange*100)/100);
 
 //The greatest increase in Profit/Losses (date and amount) over the entire period.
 //The greatest decrease in Profit/Losses (date and amount) over the entire period.
-var profitGain;
-var profitLoss;
+var BiggestProfit;
+var BiggestLoss;
 
-profitGain = differences[0];
-profitLoss = differences[0];
+BiggestProfit = differences[0];
+BiggestLoss = differences[0];
 for (let i = 0; i < differences.length; i++) {
-  if (profitGain < differences[i]) {
-    profitGain = differences[i];
-    
-    profitGainMonth = finances[i + 1][0];
+  if (BiggestProfit < differences[i]) {
+    BiggestProfit = differences[i];
+    BiggestProfitMonth = finances[i + 1][0];
   }
-  if (profitLoss > differences[i]) {
-    profitLoss = differences[i];
+  if (BiggestLoss > differences[i]) {
+    BiggestLoss = differences[i];
     profitLossMonth = finances[i + 1][0];
   }
 }
-console.log(`Greatest Gain in Profits: ${profitGainMonth} (£${profitGain})`);
-console.log(`Greatest Decrease in Profits ${profitLossMonth} (£${profitLoss})`);
+console.log(`Greatest Gain in Profits: ${BiggestProfitMonth} (£${BiggestProfit})`);
+console.log(`Greatest Decrease in Profits: ${profitLossMonth} (£${BiggestLoss})`);
