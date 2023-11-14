@@ -88,7 +88,7 @@ var finances = [
 ];
 // total number of months included in the dataset
 console.log(finances.length)
-
+console.log(finances.length - 1)
 //The net total amount of Profit/Losses over the entire period.
 
 var netTotal= 0;
@@ -97,16 +97,39 @@ for (i= 0; i < finances.length; i++) {
 }
 console.log(netTotal);
 
-// The average of the changes in Profit/Losses over the entire period.
-//var AvrgChng= [netTotal/(finances.length-1)]
+//The average of the changes in Profit/Losses over the entire period.
 
 var differences = [];
- for (var i = 1; i < finances.length; i++){
-  var difference= finances[i][1] - finances [i-1][1];
+for (let i = 1; i < finances.length; i++) {
+  var difference = finances[i][1] - finances [i-1][1];
   differences.push(difference);
- }
- console.log(`Average Change: £${difference}`);
+}
 
+differenceSum = 0;
+for ( i = 0; i < differences.length; i++) {
+  differenceSum+= differences[i];
+}
 
+var avgChange = differenceSum/ (finances.length-1);
+console.log(Math.round(avgChange*100)/100);
 
-  
+//The greatest increase in Profit/Losses (date and amount) over the entire period.
+//The greatest decrease in Profit/Losses (date and amount) over the entire period.
+var profitGain;
+var profitLoss;
+
+profitGain = differences[0];
+profitLoss = differences[0];
+for (let i = 0; i < differences.length; i++) {
+  if (profitGain < differences[i]) {
+    profitGain = differences[i];
+    
+    profitGainMonth = finances[i + 1][0];
+  }
+  if (profitLoss > differences[i]) {
+    profitLoss = differences[i];
+    profitLossMonth = finances[i + 1][0];
+  }
+}
+console.log(`Greatest Gain in Profits: ${profitGainMonth} (£${profitGain})`);
+console.log(`Greatest Decrease in Profits ${profitLossMonth} (£${profitLoss})`);
