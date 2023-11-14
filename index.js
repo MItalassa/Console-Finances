@@ -94,7 +94,7 @@ console.log("Total Months: " + finances.length)
 
 var netTotal= 0;
 for (i= 0; i < finances.length; i++) {
-  netTotal= netTotal + finances[i][1];
+  netTotal+= finances[i][1];
 }
 console.log("Total: $ " + netTotal);
 
